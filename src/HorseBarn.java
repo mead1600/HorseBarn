@@ -1,16 +1,18 @@
 public class HorseBarn {
     private Horse[] spaces;
+    private int position;
 
     public HorseBarn(Horse[] spaces)
     {
         this.spaces = spaces;
     }
 
-    public int FindHorseSpace(String name)
+    public int findHorseSpace(String name)
     {
+        int position = 0;
         for(int i = 0; i < this.spaces.length; i++)
         {
-            if(this.spaces[i].equals(name))
+            if(this.spaces[i] != null && name.equals(this.spaces[i].getName()))
             {
                 return i;
             }
@@ -21,12 +23,13 @@ public class HorseBarn {
     {
         for(int i = 0; i < this.spaces.length; i++)
         {
-            if(this.spaces[i].equals(null))
+            if(this.spaces[i] ==null)
             {
-                for(int a = 0; a + i < this.spaces.length; a++)
+                for(int a = i+1; a < this.spaces.length; a++)
                 {
-                    this.spaces[a+i] = this.spaces[a+i+1];
-                    this.spaces[this.spaces.length-1]=null;
+                    this.spaces[i] = this.spaces[a];
+                    this.spaces[a]=null;
+                    a = this.spaces.length;
                 }
             }
         }
