@@ -7,6 +7,16 @@ public class HorseBarn {
         this.spaces = spaces;
     }
 
+    public String toString()
+    {
+        String horseBunch = "";
+        for(int i = 0; i < this.spaces.length; i++)
+        {
+            horseBunch = horseBunch + " " + this.spaces[i];
+        }
+        return horseBunch;
+    }
+
     public int findHorseSpace(String name)
     {
         int position = 0;
